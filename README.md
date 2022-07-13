@@ -4,7 +4,7 @@ This repository contains two major components.
 
 1. Code to run 5 3D Human Pose Estimators on a single, or multiple RGB video(s). It then renders the results - i.e. the 3D mesh or 3D skeleton - as follows.
 
-/// Insert Video ///
+https://user-images.githubusercontent.com/17827337/178693894-c85a8489-2ed3-42d9-af64-9d3d4cf68325.mp4
 
 2. Code to compare two 3D human meshes or skeletons - i.e. comparing the discrepancies in the angles of the limbs - and visualising the discrepancies as follows.
 
