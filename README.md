@@ -17,6 +17,8 @@ This code has been tested on an Ubuntu 18.04 machine.
 
 ## Testing 5 Human Pose Estimators
 
+`cd test_five_methods`
+
 1. Clone these repositories and follow their installation instructions.
 
 - ROMP https://github.com/Saafke/ROMP 
@@ -26,6 +28,12 @@ This code has been tested on an Ubuntu 18.04 machine.
 - VideoPose3D https://github.com/facebookresearch/VideoPose3D 
 
 2. Now we can run the above methods on your input video(s). Use bash to run the "run50clips.sh" script. Make sure to change the directories in this script, to your correct directories. That is, the directories where you installed the above methods. Execute the following command:
+
+First, go into the correct subfolder of this repository:
+
+`$ cd test_five_methods`
+
+Then run:
 
 `$ bash run50clips.sh` 
 
@@ -42,3 +50,8 @@ This will run the methods on your input video(s) and store the results - i.e. th
 
 ## Comparing Two Human Meshes
 
+This will compare two estimated SMPL meshes. We first extract the 3D skeleton from the meshes. We then compare the 3D angles of each limb between MESH1 and MESH2. We visualise the discrepancies - i.e. thes difference between the 3D angles - via coloring the body parts RED (discrepancy goes over threshold) or GREEN (discrepancy is within threshold). The error threshold is a hyperparameter you can change. To try the toy-example, simple run:
+
+`python compare_two_humans/compare_and_vis.py`
+
+Your result is the output.png file. To try your own meshes, simple change the file paths in compare_and_vis.py with your own estimations or ground-truths. These should be in the form of SMPL models, e.g. the estimations from VIBE, ExPose or ROMP.
