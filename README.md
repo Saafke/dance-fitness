@@ -50,8 +50,8 @@ This will run the methods on your input video(s) and store the results - i.e. th
 
 ## Comparing Two Human Meshes
 
-This will compare two estimated SMPL meshes. We first extract the 3D skeleton from the meshes. We then compare the 3D angles of each limb between MESH1 and MESH2. We visualise the discrepancies - i.e. thes difference between the 3D angles - via coloring the body parts RED (discrepancy goes over threshold) or GREEN (discrepancy is within threshold). The error threshold is a hyperparameter you can change. To try the toy-example, simple run:
+This will compare two estimated SMPL meshes. We first extract the 3D skeleton from the meshes. We then compare the 3D angles of each limb between MESH1 and MESH2. We visualise the discrepancies - i.e. the differences between the limbs' 3D angles - via coloring the body parts RED (discrepancy goes over threshold) or GREEN (discrepancy is within threshold). The error threshold is a hyperparameter you can change. To try the toy-example, simple run:
 
 `python compare_two_humans/compare_and_vis.py`
 
-Your result is the output.png file. To try your own meshes, simple change the file paths in compare_and_vis.py with your own estimations or ground-truths. These should be in the form of SMPL models, e.g. the estimations from VIBE, ExPose or ROMP.
+Your result is the output.png file. To try your own meshes, change the file paths in compare_and_vis.py with your own estimations or ground-truths. These should be in the form of SMPL models, such the estimations from VIBE, ExPose or ROMP.
