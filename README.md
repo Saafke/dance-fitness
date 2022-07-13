@@ -8,7 +8,7 @@ https://user-images.githubusercontent.com/17827337/178693894-c85a8489-2ed3-42d9-
 
 2. Code to compare two 3D human meshes - i.e. comparing the discrepancies in the angles of the limbs - and visualising the discrepancies as follows. Here, the grey mesh is the reference (or correct) mesh. The colored mesh is the input mesh, i.e. the mesh that we want to compare with the reference. The limbs of this mesh are colored based on the correctness. Green means that limb position is within the accepted error range w.r.t. reference, and red means it is outside of the accepted error range. Note, this is done in 3D.
 
-![Comparing 3D meshes](compare.png)
+![Comparing 3D meshes](compare_two_humans/output.png)
 
 ### Hardware
 
