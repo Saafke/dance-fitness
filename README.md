@@ -45,7 +45,18 @@ This will run the methods on your input video(s) and store the results - i.e. th
 
 ## Comparing Two Human Meshes
 
-This will compare two estimated SMPL meshes. We first extract the 3D skeleton from the meshes. We then compare the 3D angles of each limb between MESH1 and MESH2. We visualise the discrepancies - i.e. the differences between the limbs' 3D angles - via coloring the body parts RED (discrepancy goes over threshold) or GREEN (discrepancy is within threshold). The error threshold is a hyperparameter you can change. To try the toy-example, simple run:
+
+
+This will compare two estimated SMPL meshes. We first extract the 3D skeleton from the meshes. We then compare the 3D angles of each limb between MESH1 and MESH2. We visualise the discrepancies - i.e. the differences between the limbs' 3D angles - via coloring the body parts RED (discrepancy goes over threshold) or GREEN (discrepancy is within threshold). The error threshold is a hyperparameter you can change. To try the toy-example:
+
+#### Install requirements via conda
+```
+conda create -n two-humans python=3.8
+conda activate two-humans
+pip install -r compare_two_humans/requirements.txt
+```
+
+#### Execute script
 
 `python compare_two_humans/compare_and_vis.py`
 

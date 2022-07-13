@@ -1,0 +1,5 @@
+numpy
+trimesh
+opencv-python
+json
+pyrender

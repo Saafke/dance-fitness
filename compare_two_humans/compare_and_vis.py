@@ -4,7 +4,6 @@ Compares two SMPL meshes.
 Computes their discrepancies and visualises them.
 """
 import numpy as np
-import joblib
 import trimesh
 import math
 import cv2
