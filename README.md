@@ -17,8 +17,6 @@ This code has been tested on an Ubuntu 18.04 machine.
 
 ## Testing 5 Human Pose Estimators
 
-`cd test_five_methods`
-
 1. Clone these repositories and follow their installation instructions.
 
 - ROMP https://github.com/Saafke/ROMP 
