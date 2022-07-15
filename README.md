@@ -3,8 +3,9 @@ This repository contains two major components.
 
 1. Run five 3D-Human-Pose-Estimation methods on a single, or multiple RGB video(s). Render the results - the estimated 3D meshes and 3D skeletons - on top of a white background.
 
-2. Compare two 3D human meshes. That is, compare the discrepancies in the angles of the limbs, and visualise the discrepancies on the mesh as shown below. The colored mesh is the input mesh, which we want to compare with a reference mesh. The limbs of this mesh are colored based on the correctness. Green means that the limb angle is within the accepted error range with respect to the reference, and red means it is outside of the accepted error range.
+2. Compare two 3D human meshes. That is, compare the discrepancies in the angles of the limbs, and visualise the discrepancies on the mesh as shown below. The colored mesh is the input mesh, which we want to compare with a reference mesh. 
 ![Comparing 3D meshes](compare_two_humans/output.png)
+_Figure: The limbs of this mesh are colored based on the correctness. Green means that the limb angle is within the accepted error range with respect to the reference, and red means it is outside of the accepted error range._
 
 #### Hardware
 
