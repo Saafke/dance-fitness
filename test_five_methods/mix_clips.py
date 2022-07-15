@@ -1,3 +1,36 @@
+#
+################################################################################## 
+# Authors: 
+#   Xavier Weber: eey138@qmul.ac.uk
+#
+#  Created Date: 2022/07/15
+#
+#####################################################################################
+# MIT License
+#
+# Copyright (c) 2022 Xavier
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+#
+#####################################################################################
+#
+
 """
 Script to create the qualitative comparison video.
 """
@@ -87,8 +120,7 @@ def add_text(clips, colors, texts, fontsize=75):
 for index in range(00,50):
     index = "{:02d}".format(index)
     
-    # -- Get the paths to the renders
-    # student
+    # -- Get the paths to the rendered videos
     front_paths = get_paths_from_squat_index(index)
 
     # -- Convert to Moviepy
@@ -111,7 +143,7 @@ for index in range(00,50):
                             ])
 
     # -- Save the result
-    final_clip.write_videofile("./qual-results/{}.mp4".format(index), audio=False)
+    final_clip.write_videofile("./{}.mp4".format(index), audio=False)
 
 
 # # -- Calculate durations
