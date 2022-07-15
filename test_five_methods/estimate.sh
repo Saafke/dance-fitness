@@ -38,8 +38,8 @@
 export TMPDIR=/mnt/c7dd8318-a1d3-4622-a5fb-3fc2d8819579/CORSMAL/tmp
 
 # Input clips and root of output directory 
-CLIPS_DIR='/mnt/c7dd8318-a1d3-4622-a5fb-3fc2d8819579/CORSMAL/QMUL_DANCE_DATA/squats/50-clips/CLIPS/side/'
-RESULTS_DIR='/mnt/c7dd8318-a1d3-4622-a5fb-3fc2d8819579/CORSMAL/QMUL_DANCE_DATA/squats/50-clips/RESULTS2/'
+CLIPS_DIR='50-clips/CLIPS'
+RESULTS_DIR='50-clips/RESULTS'
 
 
 RUN_VIBE=true
@@ -125,7 +125,7 @@ if ($RUN_DECOMR); then
     cd /media/weber/Ubuntu2/ubuntu2/Human_Pose/code-from-source/DecoMR
     . /home/weber/anaconda3/etc/profile.d/conda.sh && conda activate /mnt/c7dd8318-a1d3-4622-a5fb-3fc2d8819579/CORSMAL/envs/decomr
 
-    for i in {23..50}
+    for i in {00..50}
     do  
         # Root folder
         DECO_DIR="/mnt/c7dd8318-a1d3-4622-a5fb-3fc2d8819579/CORSMAL/QMUL_DANCE_DATA/squats/50-clips/RESULTS2/decomr/"
