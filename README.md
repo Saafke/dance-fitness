@@ -1,4 +1,8 @@
-# Dance-Fitness
+# Table of Contents
+1. [Testing five 3D-Human-Pose-Estimation models](#testfive)
+2. [Comparing Two Human Meshes](#comparetwo)
+3. [References](#ref)
+4. [Contact](#contact)
 
 This repository contains two major components. 
 
@@ -12,7 +16,7 @@ This repository contains two major components.
 This code has been tested on an Ubuntu 18.04 machine.
 
 
-## Testing five 3D-Human-Pose-Estimation models
+## 1. Testing five 3D-Human-Pose-Estimation models
 
 1. Clone these repositories and follow their installation instructions.
 
@@ -24,7 +28,7 @@ This code has been tested on an Ubuntu 18.04 machine.
 | VIBE [4]   		| [[Link](https://github.com/Saafke/VIBE)]  |
 | VideoPose3D [5]   | [[Link](https://github.com/facebookresearch/VideoPose3D )]  |
 
-Note: The above links for ROMP, DecoMR, ExPose and VIBE are forks and improved over the original, to facilitate running these methods on videos.
+_Note: The above links for ROMP, DecoMR, ExPose and VIBE are forks and improved over the original, to facilitate running these methods on videos._
 
 2. Now we can run the above methods on your input video(s). Use bash to run the "estimate.sh" script. Make sure to change the directories in this script, to your correct directories. That is, the directories where you installed the above methods. Execute the following command:
 
@@ -47,7 +51,7 @@ This will run the methods on your input video(s) and store the results - i.e. th
 `$ python mix_clips.py`
 
 
-## Comparing Two Human Meshes
+## 2. Comparing Two Human Meshes
 
 This will compare two estimated SMPL [6] meshes. We first extract the 3D skeleton from the meshes. We compute the discrepancies between skeleton1 and skeleton2, i.e. the differences between the limbs' 3D angles. The error threshold is a hyperparameter you can change. To try the toy-example:
 
