@@ -30,33 +30,31 @@
 #
 #####################################################################################
 #
-
-"""
-Script to create the qualitative comparison video.
-"""
+# Script to create the qualitative comparison video.
+#
 #import ffmpeg
 import moviepy
 from moviepy.editor import VideoFileClip, clips_array, vfx, TextClip, CompositeVideoClip
 
-def get_paths_from_squat_index(index):
+def get_paths_from_index(index):
 
     # input
-    input_vid = '/mnt/c7dd8318-a1d3-4622-a5fb-3fc2d8819579/CORSMAL/QMUL_DANCE_DATA/squats/50-clips/RESULTS/decomr/images/{}/output.mp4'.format(index)
+    input_vid = 'input{}.mp4'.format(index)
 
     # decomr
-    decomr_vid = '/mnt/c7dd8318-a1d3-4622-a5fb-3fc2d8819579/CORSMAL/QMUL_DANCE_DATA/squats/50-clips/render-results/decomr/{}/output.mp4'.format(index)
+    decomr_vid = 'output/decomr/{}/output.mp4'.format(index)
 
     # expose
-    expose_vid = '/mnt/c7dd8318-a1d3-4622-a5fb-3fc2d8819579/CORSMAL/QMUL_DANCE_DATA/squats/50-clips/render-results/expose/{}/output.mp4'.format(index)
+    expose_vid = 'output/expose/{}/output.mp4'.format(index)
 
     # romp
-    romp_vid = '/mnt/c7dd8318-a1d3-4622-a5fb-3fc2d8819579/CORSMAL/QMUL_DANCE_DATA/squats/50-clips/render-results/romp/{}/output.mp4'.format(index)
+    romp_vid = 'output/romp/{}/output.mp4'.format(index)
 
     # vibe
-    vibe_vid = '/mnt/c7dd8318-a1d3-4622-a5fb-3fc2d8819579/CORSMAL/QMUL_DANCE_DATA/squats/50-clips/render-results/vibe/{}/output.mp4'.format(index)
+    vibe_vid = 'output/vibe/{}/output.mp4'.format(index)
 
     # videopose3d
-    videopose3d_vid = '/mnt/c7dd8318-a1d3-4622-a5fb-3fc2d8819579/CORSMAL/QMUL_DANCE_DATA/squats/50-clips/RESULTS/videopose3d/videos/{}/final_output.mp4'.format(index)
+    videopose3d_vid = 'output/videopose3d/videos/{}/final_output.mp4'.format(index)
 
     return [input_vid, decomr_vid, expose_vid, romp_vid, vibe_vid, videopose3d_vid]
 
@@ -117,11 +115,13 @@ def add_text(clips, colors, texts, fontsize=75):
 
     return result
 
+# Loop over the videos
+
 for index in range(00,50):
     index = "{:02d}".format(index)
     
     # -- Get the paths to the rendered videos
-    front_paths = get_paths_from_squat_index(index)
+    front_paths = get_paths_from_index(index)
 
     # -- Convert to Moviepy
     front_clips = get_clips_from_paths(front_paths, margin=10)

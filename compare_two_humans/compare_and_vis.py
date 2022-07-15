@@ -282,7 +282,7 @@ def render(img, score, verts, faces, cam, angle=None, axis=None, color=[1.0, 1.0
 
 def compute_score(skel_1, skel_2, angle_margin=5, radius=.2, num_seg=10, scale=.1):
 	"""
-	Computes the discrepancies between skeleton series 1 and 2.
+	Computes the discrepancies between skeleton 1 and 2.
 	"""
 
 	# HELPER FUNCTIONS
