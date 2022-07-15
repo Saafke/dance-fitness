@@ -8,7 +8,7 @@
 #####################################################################################
 # MIT License
 #
-# Copyright (c) 2022 Xavier
+# Copyright (c) 2022 Xavier Weber
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -245,7 +245,6 @@ def get_all_head_vertex_locations(verts):
     #print("angle=", angle)
 
     return mean_of_head, mean_of_hips
-
 
 def get_original_image_size(index):
     path = os.path.join('/mnt/c7dd8318-a1d3-4622-a5fb-3fc2d8819579/CORSMAL/QMUL_DANCE_DATA/squats/50-clips/RESULTS2/decomr/images/{}/0001.png'.format(index))
