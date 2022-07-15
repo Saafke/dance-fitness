@@ -17,11 +17,11 @@ This code has been tested on an Ubuntu 18.04 machine.
 
 | Method      		| Repository link |
 | ----------------- | ----------------|
-| ROMP [1]    		| [[Link](https://github.com/Saafke/ROMP)]		|
-| DecoMR [2]   		| [[Link](https://github.com/Saafke/DecoMR)]  |
-| ExPose [3]   		| [[Link](https://github.com/Saafke/expose)]  |
-| VIBE [4]   		| [[Link](https://github.com/Saafke/VIBE)]  |
-| VideoPose3D [5]   | [[Link](https://github.com/facebookresearch/VideoPose3D )]  |
+| ROMP [1]    		| <https://github.com/Saafke/ROMP)>		|
+| DecoMR [2]   		| <https://github.com/Saafke/DecoMR>  |
+| ExPose [3]   		| <https://github.com/Saafke/expose>  |
+| VIBE [4]   		| <https://github.com/Saafke/VIBE>  |
+| VideoPose3D [5]   | <https://github.com/facebookresearch/VideoPose3D>  |
 
 _Note: The above links for ROMP, DecoMR, ExPose and VIBE are forks and improved over the original, to facilitate running these methods on videos._
 
