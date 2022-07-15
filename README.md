@@ -1,9 +1,9 @@
-## 3D Human Body
+## 3D Human Body Estimation and Comparison
 This repository contains two major components. 
 
 1. Run five 3D-Human-Pose-Estimation methods on a single, or multiple RGB video(s). Render the results - the estimated 3D meshes and 3D skeletons - on top of a white background.
 
-2. Compare two 3D human meshes. That is, compare the discrepancies in the angles of the limbs, and visualise the discrepancies on the mesh as shown below. The colored mesh is the input mesh, which we want to compare with a reference mesh. 
+2. Compare two 3D human meshes. That is, compare the discrepancies in the angles of the limbs, and visualise the discrepancies on the mesh as shown below. The colored mesh is the input mesh, which we compare with a reference mesh. 
 ![Comparing 3D meshes](compare_two_humans/output.png)
 _Figure: The limbs of this mesh are colored based on the correctness. Green means that the limb angle is within the accepted error range with respect to the reference, and red means it is outside of the accepted error range._
 
@@ -14,11 +14,13 @@ This code has been tested on an Ubuntu 18.04 machine.
 
 # Testing five 3D-Human-Pose-Estimation models
 
-1. Clone these repositories and follow their installation instructions.
+#### Install the methods
+
+Clone these repositories and follow their installation instructions.
 
 | Method      		| Repository link |
 | ----------------- | ----------------|
-| [1] ROMP   		| <https://github.com/Saafke/ROMP>		|
+| [1] ROMP   		| <https://github.com/Saafke/ROMP>	  |
 | [2] DecoMR   		| <https://github.com/Saafke/DecoMR>  |
 | [3] ExPose   		| <https://github.com/Saafke/expose>  |
 | [4] VIBE   		| <https://github.com/Saafke/VIBE>  |
@@ -26,7 +28,9 @@ This code has been tested on an Ubuntu 18.04 machine.
 
 _Note: The above links for ROMP, DecoMR, ExPose and VIBE are forks and improved over the original, to facilitate running these methods on videos._
 
-2. Now we can run the above methods on your input video(s). Use bash to run the "estimate.sh" script. Make sure to change the directories in this script, to your correct directories. That is, the directories where you installed the above methods. Execute the following command:
+#### Run the methods
+
+Now we can run the above methods on your input video(s). Use bash to run the "estimate.sh" script. Make sure to change the directories in this script, to your correct directories. That is, the directories where you installed the above methods. Execute the following command:
 
 First, go into the correct subfolder of this repository:
 
@@ -38,11 +42,13 @@ Then run:
 
 This will run the methods on your input video(s) and store the results - i.e. the estimated 3D meshes (or skeletons) and camera parameters - in the output folders.
 
-3. If we want to visualise the results, we need to render them. The following script will visualise the 3D meshes (or skeletons) from a front-view and a side-view (90 degrees rotated about the up-axis) on a white background. It renders the estimations via a weak-perspective camera model. Execute the following command:
+#### Visualise results
+
+If we want to visualise the results, we need to render them. The following script will visualise the 3D meshes (or skeletons) from a front-view and a side-view (90 degrees rotated about the up-axis) on a white background. It renders the estimations via a weak-perspective camera model. Execute the following command:
 
 `$ python render.py`
 
-4. The above code renders independent videos for each method. To combine the videos into a single view:
+The above code renders independent videos for each method. To combine the videos into a single view:
 
 `$ python mix_clips.py`
 
