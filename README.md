@@ -1,7 +1,7 @@
 ## 3D Human Body Estimation and Comparison
 This repository contains two major components. 
 
-1. Run five 3D-Human-Pose-Estimation methods on a single, or multiple RGB video(s). Render the results - the estimated 3D meshes and 3D skeletons - on top of a white background.
+1. Run five 3D-Human-Pose-Estimation methods on a single, or multiple RGB video(s). Render the estimated 3D meshes and 3D skeletons, in a front-view and a side-view (90 degrees rotated about the up-axis), on top of a white background.
 
 2. Compare two 3D human meshes. That is, compare the discrepancies in the angles of the limbs, and visualise the discrepancies on the mesh as shown below. The colored mesh is the input mesh, which we compare with a reference mesh. 
 ![Comparing 3D meshes](compare_two_humans/output.png)
@@ -44,7 +44,7 @@ This will run the methods on your input video(s) and store the results - i.e. th
 
 #### Visualise results
 
-If we want to visualise the results, we need to render them. The following script will visualise the 3D meshes (or skeletons) from a front-view and a side-view (90 degrees rotated about the up-axis) on a white background. It renders the estimations via a weak-perspective camera model. Execute the following command:
+If we want to visualise the results, we need to render them. The following script will render the 3D meshes (or skeletons) via a weak-perspective camera model. Execute the following command:
 
 `$ python render.py`
 
