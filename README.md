@@ -1,9 +1,4 @@
-# Table of Contents
-1. [Testing five 3D-Human-Pose-Estimation models](#testfive)
-2. [Comparing Two Human Meshes](#comparetwo)
-3. [References](#ref)
-4. [Contact](#contact)
-
+## 3D Human Body
 This repository contains two major components. 
 
 1. Run five 3D-Human-Pose-Estimation methods on a single, or multiple RGB video(s). Render the results - the estimated 3D meshes and 3D skeletons - on top of a white background.
@@ -11,12 +6,12 @@ This repository contains two major components.
 2. Compare two 3D human meshes. That is, compare the discrepancies in the angles of the limbs, and visualise the discrepancies on the mesh as shown below. The colored mesh is the input mesh, which we want to compare with a reference mesh. The limbs of this mesh are colored based on the correctness. Green means that the limb angle is within the accepted error range with respect to the reference, and red means it is outside of the accepted error range.
 ![Comparing 3D meshes](compare_two_humans/output.png)
 
-### Hardware
+#### Hardware
 
 This code has been tested on an Ubuntu 18.04 machine.
 
 
-## 1. Testing five 3D-Human-Pose-Estimation models
+# Testing five 3D-Human-Pose-Estimation models
 
 1. Clone these repositories and follow their installation instructions.
 
@@ -51,7 +46,7 @@ This will run the methods on your input video(s) and store the results - i.e. th
 `$ python mix_clips.py`
 
 
-## 2. Comparing Two Human Meshes
+# Comparing Two Human Meshes
 
 This will compare two estimated SMPL [6] meshes. We first extract the 3D skeleton from the meshes. We compute the discrepancies between skeleton1 and skeleton2, i.e. the differences between the limbs' 3D angles. The error threshold is a hyperparameter you can change. To try the toy-example:
 
@@ -68,7 +63,7 @@ pip install -r compare_two_humans/requirements.txt
 
 Your result is the output.png file. To try your own meshes, change the file paths in compare_and_vis.py with your own estimations or ground-truths. These should be in the form of SMPL models, such the estimations from VIBE, ExPose or ROMP.
 
-### References
+## References
 [1] Sun, Y., Bao, Q., Liu, W., Fu, Y., Black, M. J., & Mei, T. (2021). **Monocular, one-stage, regression of multiple 3d people.** In Proceedings of the IEEE/CVF International Conference on Computer Vision (pp. 11179-11188).[[Weblink](https://openaccess.thecvf.com/content/ICCV2021/html/Sun_Monocular_One-Stage_Regression_of_Multiple_3D_People_ICCV_2021_paper.html)]
 
 [2] Zeng, W., Ouyang, W., Luo, P., Liu, W., & Wang, X. (2020). **3D Human Mesh Regression with Dense Correspondence.** In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 7054-7063). [[Weblink](https://openaccess.thecvf.com/content_CVPR_2020/html/Zeng_3D_Human_Mesh_Regression_With_Dense_Correspondence_CVPR_2020_paper.html)]
@@ -81,6 +76,6 @@ Your result is the output.png file. To try your own meshes, change the file path
 
 [6] Loper, M., Mahmood, N., Romero, J., Pons-Moll, G., & Black, M. J. (2015). **SMPL: A skinned multi-person linear model.** ACM transactions on graphics (TOG), 34(6), 1-16. [[Weblink](https://smpl.is.tue.mpg.de/)]
 
-### Contact
+## Contact
 
 This code has been written by Xavier Weber and Mohamed Ilyes Lakhal. For queries regarding this repository, please contact Xavier (eey138@qmul.ac.uk).
