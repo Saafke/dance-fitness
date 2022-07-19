@@ -1,10 +1,9 @@
-# The code herin makes us of the SMPL-Body, 
+# The code herein makes us of the SMPL-Body, 
 # which is licensed under the Creative Commons Attribution 4.0 International License
 # License link: https://smpl.is.tue.mpg.de/bodylicense.html
 
 """
 Compares two SMPL meshes.
-
 Computes their discrepancies and visualises them.
 """
 import numpy as np

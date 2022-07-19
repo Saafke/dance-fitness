@@ -5,7 +5,7 @@ This repository contains two major components.
 
 2. Compare two 3D human meshes. That is, compare the discrepancies in the angles of the limbs, and visualise the discrepancies on the mesh as shown below. The colored mesh is the input mesh, which we compare with a reference mesh. 
 ![Comparing 3D meshes](compare_two_humans/output.png)
-_Figure: The limbs of this mesh are colored based on their correctness. Green means that the limb angle is within the accepted error range with respect to the reference, and red means it is outside of the accepted error range._
+_Figure: The limbs of this mesh are colored based on their correctness. Green means that the limb angle is within the accepted error range with respect to the reference, and red means it is outside of the accepted error range. SMPL-Body was used for this visualisation courtesy of the Max Planck Institute for Intelligent Systems._
 
 #### Hardware
 
@@ -92,5 +92,5 @@ Your result is the output.png file. To try your own meshes, change the file path
 ## Contact
 This code has been written by Xavier Weber and Mohamed Ilyes Lakhal. For queries regarding this repository, please contact Xavier (eey138@qmul.ac.uk).
 
-# Acknowledgements and licenses
+## Acknowledgements and licenses
 This repository makes use of the SMPL-Body, which is licensed under the Creative Commons Attribution 4.0 International License. License link: https://smpl.is.tue.mpg.de/bodylicense.html
