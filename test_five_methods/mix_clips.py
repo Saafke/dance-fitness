@@ -1,8 +1,4 @@
-#####################################################################################
-#
 # Script to create the qualitative comparison video.
-#
-#import ffmpeg
 import moviepy
 from moviepy.editor import VideoFileClip, clips_array, vfx, TextClip, CompositeVideoClip
 

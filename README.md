@@ -44,9 +44,9 @@ This will run the methods on your input video(s) and store the results - i.e. th
 
 #### Visualise results
 
-If we want to visualise the results, we need to render them. The following script will render the 3D meshes (or skeletons) via a weak-perspective camera model. Execute the following command:
+If we want to visualise the results, we need to render them. The following script will render the 3D meshes (or skeletons) via a weak-perspective camera model. Execute the following command, specifying the desired height and width of the rendered images (recommended to use the same resolution as the input image or video):
 
-`$ python render.py`
+`$ python render.py --width 1920 --height 1080`
 
 The above code renders independent videos for each method. To combine the videos into a single view:
 
