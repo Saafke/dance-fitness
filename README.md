@@ -64,6 +64,12 @@ conda activate two-humans
 pip install -r compare_two_humans/requirements.txt
 ```
 
+#### Download vertex labels
+
+This file tells us which vertices belongs to which (SMPL) body parts.
+
+`wget -P ./compare_two_humans/data https://github.com/Meshcapade/wiki/tree/main/assets/SMPL_body_segmentation/smpl/smpl_vert_segmentation.json`
+
 #### Execute script
 
 `python compare_two_humans/compare_and_vis.py`
@@ -84,5 +90,7 @@ Your result is the output.png file. To try your own meshes, change the file path
 [6] Loper, M., Mahmood, N., Romero, J., Pons-Moll, G., & Black, M. J. (2015). **SMPL: A skinned multi-person linear model.** ACM transactions on graphics (TOG), 34(6), 1-16. [[Weblink](https://smpl.is.tue.mpg.de/)]
 
 ## Contact
-
 This code has been written by Xavier Weber and Mohamed Ilyes Lakhal. For queries regarding this repository, please contact Xavier (eey138@qmul.ac.uk).
+
+# Acknowledgements and licenses
+This repository makes use of the SMPL-Body, which is licensed under the Creative Commons Attribution 4.0 International License. License link: https://smpl.is.tue.mpg.de/bodylicense.html

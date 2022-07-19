@@ -1,3 +1,7 @@
+# The code herin makes us of the SMPL-Body, 
+# which is licensed under the Creative Commons Attribution 4.0 International License
+# License link: https://smpl.is.tue.mpg.de/bodylicense.html
+
 """
 Compares two SMPL meshes.
 
@@ -159,7 +163,7 @@ def render(img, score, verts, faces, cam, angle=None, axis=None, color=[1.0, 1.0
 	if score is not None:
 		
 		# Online
-		f = open('./data/part_based_vertex_label.json',)
+		f = open('./data/smpl_vert_segmentation.json',)
 		labels = json.load(f)
 
 		# Loop over the vertices and colour them
