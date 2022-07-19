@@ -6,25 +6,25 @@
 import moviepy
 from moviepy.editor import VideoFileClip, clips_array, vfx, TextClip, CompositeVideoClip
 
-def get_paths_from_index(index):
+def get_paths():
 
     # input
-    input_vid = 'input{}.mp4'.format(index)
+    input_vid = 'input.mp4'
 
     # decomr
-    decomr_vid = 'output/decomr/{}/output.mp4'.format(index)
+    decomr_vid = 'output/decomr/output.mp4'
 
     # expose
-    expose_vid = 'output/expose/{}/output.mp4'.format(index)
+    expose_vid = 'output/expose/output.mp4'
 
     # romp
-    romp_vid = 'output/romp/{}/output.mp4'.format(index)
+    romp_vid = 'output/romp/output.mp4'
 
     # vibe
-    vibe_vid = 'output/vibe/{}/output.mp4'.format(index)
+    vibe_vid = 'output/vibe/output.mp4'
 
     # videopose3d
-    videopose3d_vid = 'output/videopose3d/videos/{}/final_output.mp4'.format(index)
+    videopose3d_vid = 'output/videopose3d/output.mp4'
 
     return [input_vid, decomr_vid, expose_vid, romp_vid, vibe_vid, videopose3d_vid]
 
@@ -46,10 +46,6 @@ def get_max_duration(clips):
 
     # get the max duration (i.e. longest clip)
     max_duration = max(durations)
-    
-    #NOTE: gonna take the second video, 
-    # because the input video is somehow always longer (even though nr of frames are same as the rendered stuff)
-    #max_duration = durations[1]
 
     return max_duration
 
@@ -85,36 +81,32 @@ def add_text(clips, colors, texts, fontsize=75):
 
     return result
 
-# Loop over the videos
+#### Mix the clips together
 
-for index in range(00,50):
-    index = "{:02d}".format(index)
-    
-    # -- Get the paths to the rendered videos
-    front_paths = get_paths_from_index(index)
+# -- Get the paths to the rendered videos
+front_paths = get_paths())
 
-    # -- Convert to Moviepy
-    front_clips = get_clips_from_paths(front_paths, margin=10)
+# -- Convert to Moviepy
+front_clips = get_clips_from_paths(front_paths, margin=10)
 
-    # -- Get max durations
-    front_max_duration = get_max_duration(front_clips)
-    max_duration = front_max_duration
-    print("final max duration", max_duration)
+# -- Get max durations
+front_max_duration = get_max_duration(front_clips)
+max_duration = front_max_duration
+print("final max duration", max_duration)
 
-    # -- Slow down each video clip to match the longest clip
-    front_clips = make_clips_equal_length(front_clips, max_duration)
+# -- Slow down each video clip to match the longest clip
+front_clips = make_clips_equal_length(front_clips, max_duration)
 
-    # Add text
-    front_clips = add_text(front_clips, colors=["white", "black", "black", "black", "black", "black"],
-                                texts= ["Input", "A", "B", "E", "D", "C"])
-    final_clip = clips_array([
-                            [front_clips[0], front_clips[1], front_clips[2]], 
-                            [front_clips[5], front_clips[4], front_clips[3]],
-                            ])
+# Add text
+front_clips = add_text(front_clips, colors=["white", "black", "black", "black", "black", "black"],
+							texts= ["Input", "A", "B", "E", "D", "C"])
+final_clip = clips_array([
+						[front_clips[0], front_clips[1], front_clips[2]], 
+						[front_clips[5], front_clips[4], front_clips[3]],
+						])
 
-    # -- Save the result
-    final_clip.write_videofile("./{}.mp4".format(index), audio=False)
-
+# -- Save the result
+final_clip.write_videofile("./{}.mp4", audio=False)
 
 # # -- Calculate durations
 # durations = []

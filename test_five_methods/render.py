@@ -16,7 +16,13 @@ Image:
 which output white images with two poses (same pose but one normal view, one side view). 
 """
 
-# some code taken from VIBE: https://github.com/mkocabas/VIBE
+parser = argparse.ArgumentParser(description='Read arguments.')
+parser.add_argument('--height', help='The height of the rendered images')
+parser.add_argument('--width', help='The width of the rendered images')
+args = parser.parse_args()
+height = args.height
+width = args.width
+channels = 3 # change to 1 if black/white
 
 import math
 import trimesh
@@ -30,7 +36,6 @@ import os
 import re
 from d3g.angle import lineAndPlane, lines
 from pyrender.constants import RenderFlags
-#from lib.models.smpl import get_smpl_faces
 
 class WeakPerspectiveCamera(pyrender.Camera):
     def __init__(self,
@@ -188,7 +193,7 @@ def images2video(folder):
 def get_all_head_vertex_locations(verts):
 
     # Load semantic body part labelling dictionary (maps vertex index to semantic body part label)
-    f = open('/media/weber/Ubuntu2/ubuntu2/Human_Pose/checker-code/files/part_based_vertex_label.json')
+    f = open('./data/smpl_vert_segmentation.json')
     labels = json.load(f)
 
     # Get the mean of all 3D points of the head
@@ -216,30 +221,28 @@ def get_all_head_vertex_locations(verts):
 
     return mean_of_head, mean_of_hips
 
-def get_original_image_size(index):
-    path = os.path.join('/mnt/c7dd8318-a1d3-4622-a5fb-3fc2d8819579/CORSMAL/QMUL_DANCE_DATA/squats/50-clips/RESULTS2/decomr/images/{}/0001.png'.format(index))
+def get_original_image_size(path):
     image = cv2.imread(path)
     return image.shape
 
-def render_decomr(index, dir):
-    # ----------------------------------------------------------
-    # LOAD decomr ESTIMATIONS # these meshes have 6890 vertices
-    decomr_meshes_dir = os.path.join(dir, 'RESULTS2/decomr/deco-results/{}/images/meshes'.format(index))
-    decomr_cams_dir = os.path.join(dir, 'RESULTS2/decomr/deco-results/{}/images/cams'.format(index))
-    
+def render_decomr():
+	"""
+	Render the DecoMR estimated meshes.
+	These meshes have the default SMPL format: 6890 vertices.
+	"""
+    # Load
+    decomr_meshes_dir = "./output/decomr/meshes"
+    decomr_cams_dir = "./output/decomr/cams"
     decomr_meshes_paths = [f for f in os.listdir(decomr_meshes_dir) if f.endswith('.obj')]
     decomr_meshes_paths.sort(key=lambda f: int(re.sub('\D', '', f)))
     decomr_cams_paths = [f for f in os.listdir(decomr_cams_dir) if f.endswith('.npy')]
     decomr_cams_paths.sort(key=lambda f: int(re.sub('\D', '', f)))
-    
     print("length of meshes_paths:", decomr_meshes_paths)
     print("length of meshes_paths:", decomr_cams_paths)
 
-    out_path = os.path.join(dir, 'render-results', 'decomr', index)
-    print(out_path)
+	# Set output path
+    out_path = "./output/decomr/rendered-images"
     os.makedirs(out_path, exist_ok=True)
-
-    height,width,channels = get_original_image_size(index)
 
     # Loop over the meshes and render them
     for idx in range(0, len(decomr_meshes_paths)-1):
@@ -295,22 +298,24 @@ def render_decomr(index, dir):
     images2video(out_path)
 
 def render_romp(index, dir):
-    # ----------------------------------------------------------
-    # LOAD ROMP ESTIMATIONS # these meshes have 6890 vertices
-    romp_meshes_dir = os.path.join(dir,'RESULTS2/romp/{}'.format(index))
-    #print(dir, romp_meshes_dir)
+	"""
+	Render the ROMP estimated meshes.
+	These meshes have the default SMPL format: 6890 vertices.
+	"""
+    
+	# Load
+    romp_meshes_dir = "./output/romp/meshes"
     romp_meshes_paths = [f for f in os.listdir(romp_meshes_dir) if f.endswith('.obj')]
     romp_meshes_paths.sort(key=lambda f: int(re.sub('\D', '', f)))
     print("length of meshes_paths:", romp_meshes_paths)
 
-    height,width,channels = get_original_image_size(index)
+	# Set size of renderer
     R = Renderer((1024,1024))
 
-    out_path = os.path.join(dir, 'render-results', 'romp', index)
+    out_path = "./output/romp/rendered-images"
     os.makedirs(out_path, exist_ok=True)
 
     count = 0 
-
     # Loop over the meshes and render them
     for idx in range(0, len(romp_meshes_paths)-1):
 
@@ -351,27 +356,28 @@ def render_romp(index, dir):
     images2video(out_path)
 
 def render_expose(index, dir):
-    #----------------------------------------------------------
-    # LOAD EXPOSE ESTIMATIONS # these meshes have 10745
-    expose_meshes_dir = os.path.join(dir, 'RESULTS2/expose/{}/meshes/'.format(index))
-    expose_cams_dir = os.path.join(dir, 'RESULTS2/expose/{}/cams/'.format(index))
-
+	"""
+	Render the ExPose estimated meshes.
+	These meshes have the default SMPLx format: 10745 vertices.
+	"""
+	# Load
+    expose_meshes_dir = "./output/expose/meshes"
+    expose_cams_dir = "./output/expose/cams"
     expose_meshes_paths = [f for f in os.listdir(expose_meshes_dir) if f.endswith('.obj')]
     expose_meshes_paths.sort(key=lambda f: int(re.sub('\D', '', f)))
     expose_cams_paths = [f for f in os.listdir(expose_cams_dir) if f.endswith('.npy')]
     expose_cams_paths.sort(key=lambda f: int(re.sub('\D', '', f)))
     print("length of meshes_paths:", expose_meshes_paths)
 
-    out_path = os.path.join(dir, 'render-results', 'expose', index)
+	# Set output path
+    out_path = "./output/expose/rendered-images"
     os.makedirs(out_path, exist_ok=True)
     
-    height,width,channels = get_original_image_size(index)
+	# Set renderer
     R = Renderer((width,height))
 
-    # 
     previous_frame_id = None
     im_count = 0
-
     # Loop over the meshes and render them
     for idx in range(0, len(expose_meshes_paths)-1):
 
@@ -412,19 +418,26 @@ def render_expose(index, dir):
     images2video(out_path)
 
 def render_vibe(index, dir):
-    out_path = os.path.join(dir, 'render-results', 'vibe', index)
+	"""
+	Render the VIBE estimated meshes.
+	These meshes have the default SMPL format: 6890 vertices.
+	"""
+	# Load
+	vibe_meshes_dir = "./output/vibe/meshes"
+	vibe_meshes_paths = [f for f in os.listdir(vibe_meshes_dir) if f.endswith('.obj')]
+	vibe_meshes_paths.sort(key=lambda f: int(re.sub('\D', '', f)))
+
+	vibe_cams_dir = "./output/vibe/cams"
+    vibe_intrin_paths = [f for f in os.listdir(vibe_cams_dir) if f.endswith('.npy')]
+    vibe_intrin_paths.sort(key=lambda f: int(re.sub('\D', '', f)))
+
+    # Set the output path
+	out_path = "./output/vibe/rendered-images"
     os.makedirs(out_path, exist_ok=True)
-    
+	
+	# Init renderer
     height,width,channels = get_original_image_size(index)
     R = Renderer((width,height))
-
-    # ----------------------------------------------------------
-    # LOAD VIBE ESTIMATIONS # these meshes have 6890 vertices
-    vibe_meshes_dir = os.path.join(dir, 'RESULTS2/vibe/{}/meshes/000000'.format(index))
-    vibe_meshes_paths = [f for f in os.listdir(vibe_meshes_dir) if f.endswith('.obj')]
-    vibe_intrin_paths = [f for f in os.listdir(vibe_meshes_dir) if f.endswith('.npy')]
-    vibe_meshes_paths.sort(key=lambda f: int(re.sub('\D', '', f)))
-    vibe_intrin_paths.sort(key=lambda f: int(re.sub('\D', '', f)))
 
     # Loop over the meshes and render them
     for idx in range(0, len(vibe_meshes_paths)-1):
@@ -452,20 +465,11 @@ def render_vibe(index, dir):
 
     images2video(out_path)
 
-ballet = False
-if ballet:
-    direc = '/media/weber/Ubuntu2/ubuntu2/Human_Pose/QMUL-data/Evaluation-clips/Clips/Fitness/ballet'
-else:
-    direc = '/mnt/c7dd8318-a1d3-4622-a5fb-3fc2d8819579/CORSMAL/QMUL_DANCE_DATA/squats/50-clips'
-
-for index in range(00,50):
-    index = "{:02d}".format(index)
-    print("INDEX:", index)
-
-    render_decomr(index, direc)
-    render_romp(index, direc)
-    render_expose(index, direc)
-    render_vibe(index, direc)
+# Let's render!
+render_decomr()
+render_romp(
+render_expoe()
+render_vibe()
 
 print("Done!")
 

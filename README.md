@@ -21,16 +21,16 @@ Clone these repositories and follow their installation instructions.
 | Method      		| Repository link |
 | ----------------- | ----------------|
 | [1] ROMP   		| <https://github.com/Saafke/ROMP>	  |
-| [2] DecoMR   		| <https://github.com/Saafke/DecoMR>  |
-| [3] ExPose   		| <https://github.com/Saafke/expose>  |
-| [4] VIBE   		| <https://github.com/Saafke/VIBE>  |
+| [2] DecoMR   		| <https://github.com/zengwang430521/DecoMR>  |
+| [3] ExPose   		| <https://github.com/vchoutas/expose>  |
+| [4] VIBE   		| <https://github.com/mkocabas/VIBE>  |
 | [5] VideoPose3D   | <https://github.com/facebookresearch/VideoPose3D>  |
 
-_Note: The above links for ROMP, DecoMR, ExPose and VIBE are forks and improved over the original, to facilitate running these methods on videos._
+_Note: The above link for ROMP is a fork and improved over the original, to facilitate running this method on videos._
 
 #### Run the methods
 
-Now we can run the above methods on your input video(s). Use bash to run the "estimate.sh" script. Make sure to change the directories in this script, to your correct directories. That is, the directories where you installed the above methods. Execute the following command:
+Now we can run the above methods on your input video(s). Use bash to run the "estimate.sh" script. Make sure to change the directories in the top of this script, to your correct directories. That is, the directories where you installed the above methods and conda environments. Execute the following commands:
 
 First, go into the correct subfolder of this repository:
 
@@ -40,7 +40,7 @@ Then run:
 
 `$ bash estimate.sh` 
 
-This will run the methods on your input video(s) and store the results - i.e. the estimated 3D meshes (or skeletons) and camera parameters - in the output folders.
+This will run the methods on your input video(s) and store the results - i.e. the estimated 3D meshes (or skeletons) and camera parameters - in the corresponding output folders (in this repository).
 
 #### Visualise results
 
