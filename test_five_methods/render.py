@@ -482,8 +482,8 @@ def render_vibe(index, dir):
 
 # Let's render!
 render_decomr()
-render_romp(
-render_expoe()
+render_romp()
+render_expose()
 render_vibe()
 
 print("Done!")
